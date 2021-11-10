@@ -37,3 +37,10 @@ csapdup1.xts == csapdup2.xts
 dupla <- duplicated(index(csap.xts))
 csap.xts <- csap.xts[!dupla]
 csap.xts[is.na(csap.xts)] <- 0
+
+## Elemzés
+sum(csap.xts["2019-11-01/2020-10-31"])
+sum(csap.xts["2020-11-01/2021-10-31"])
+
+mean(hom.xts["2019-11-01/2020-10-31"], na.rm = TRUE)
+mean(hom.xts["2020-11-01/2021-10-31"], na.rm = TRUE)
