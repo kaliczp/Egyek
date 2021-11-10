@@ -44,3 +44,8 @@ sum(csap.xts["2020-11-01/2021-10-31"])
 
 mean(hom.xts["2019-11-01/2020-10-31"], na.rm = TRUE)
 mean(hom.xts["2020-11-01/2021-10-31"], na.rm = TRUE)
+
+sum(csap.xts["2020-01-01/2020-12-31"])
+mean(hom.xts["2020-01-01/2020-12-31"], na.rm = TRUE)
+
+plot(apply.monthly(csap.xts["2019-11-01/2021-10-31"], sum), type = "h")
