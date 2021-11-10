@@ -14,6 +14,7 @@ hom <- rbind(hom, ttraw[ttraw$parameter == "Levegőhőmérséklet",])
 library(xts)
 csap.xts <- xts(csap$value, as.POSIXct(csap$date))
 hom.xts <- xts(hom$value, as.POSIXct(hom$date))
+
 ## Duplák, amelyből az első adathiány
 dupla <- duplicated(index(hom.xts))
 dupla <- c(dupla[-1],FALSE)
@@ -25,3 +26,14 @@ hom.xts <- hom.xts[-nadupla.nr]
 ## Sima duplák
 dupla <- duplicated(index(hom.xts))
 hom.xts <- hom.xts[!dupla]
+
+## Duplák ellenőrzése
+dupla <- duplicated(index(csap.xts))
+csapdup1.xts <- csap.xts[dupla]
+dupla <- c(dupla[-1],FALSE)
+csapdup2.xts <- csap.xts[dupla]
+csapdup1.xts == csapdup2.xts
+## Sima duplák
+dupla <- duplicated(index(csap.xts))
+csap.xts <- csap.xts[!dupla]
+csap.xts[is.na(csap.xts)] <- 0
